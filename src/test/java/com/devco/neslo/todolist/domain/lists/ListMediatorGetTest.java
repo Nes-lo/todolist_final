@@ -37,7 +37,7 @@ public class ListMediatorGetTest {
 
         openMocks(this);
         when(repository.save(any(ToDoList.class))).thenReturn(toDoListOut);
-        when(repository.getRegistration(any(Long.class))).thenReturn(toDoListOut);
+       when(repository.getRegistration(any(Long.class))).thenReturn(toDoListOut);
         mediator = new ListMediatorDefault(repository);
     }
 
