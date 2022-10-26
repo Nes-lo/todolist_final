@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ListAcceptanceTest {
+class ListAcceptanceCreateTest {
 
     @LocalServerPort
     private int port;

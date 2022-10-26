@@ -11,7 +11,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.openMocks;
 
-class ListMediatorTest {
+class ListMediatorCreateTest {
     @Mock
     private ListRepository repository;
     private ListMediator mediator;
@@ -22,14 +22,14 @@ class ListMediatorTest {
         toDoListIn = ToDoList.builder()
                 .name("Cosas por hacer")
                 .description("Mis cosas por hacer esta semana")
-                .user("cdanielmg200@gmail.com")
+                .user("neslo@neslo.com")
                 .build();
 
-        ToDoList toDoListOut = ToDoList.builder()
+      ToDoList toDoListOut = ToDoList.builder()
                 .id(100)
                 .name("Cosas por hacer")
                 .description("Mis cosas por hacer esta semana")
-                .user("cdanielmg200@gmail.com")
+                .user("neslo@neslo.com")
                 .build();
 
         openMocks(this);
@@ -107,4 +107,6 @@ class ListMediatorTest {
         assertTrue(exception.getMessage().contains("The user does not have the email format"));
         verify(repository, times(0)).save(any(ToDoList.class));
     }
+
+
 }

@@ -31,18 +31,25 @@ public class MemoryListRepository implements ListRepository {
     public ToDoList getRegistration(long id){
 
    int position=lists.indexOf(buscar(id,lists).get(0));
-
+        System.out.println("position "+position);
+        System.out.println("id "+id);
+        System.out.println("list "+lists.size());
        if(position>=0) {
            ToDoList toDoListRegistration = new ToDoList();
            toDoListRegistration.setId(lists.get(position).getId());
-           System.out.println(toDoListRegistration.getId());
            toDoListRegistration.setName(lists.get(position).getName());
            toDoListRegistration.setDescription(lists.get(position).getDescription());
            toDoListRegistration.setUser(lists.get(position).getUser());
            return toDoListRegistration;
        }
        else {
-           return null;
+           ToDoList toDoListRegistration = new ToDoList();
+           toDoListRegistration.setId(1000);
+           toDoListRegistration.setName("no encontrado");
+           toDoListRegistration.setDescription("no paso");
+           toDoListRegistration.setUser("no paso@no paso.com");
+           return toDoListRegistration;
+
        }
     }
 
