@@ -42,7 +42,7 @@ public class ListsController {
         try {
             ToDoList toDoListToGetList = listMediator.registration(id);
             ToDoListInfra toDoListInfraGetList = ToDoListMapper.toToDoListInfra(toDoListToGetList);
-            return new ResponseEntity(toDoListInfraGetList, HttpStatus.ACCEPTED);
+             return new ResponseEntity(toDoListInfraGetList, HttpStatus.ACCEPTED);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity(new Error("Solicitud errada", e.getMessage().split(System.lineSeparator())),
                     HttpStatus.BAD_REQUEST);
@@ -50,8 +50,6 @@ public class ListsController {
             return new ResponseEntity(new Error("Error inesperado", new String[]{e.getMessage()}),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-
     }
 
     @PatchMapping(path ="/lists/modify/{id}")
@@ -69,9 +67,7 @@ public class ListsController {
                     HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
-
     }
-
     @DeleteMapping(path ="/lists/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try {

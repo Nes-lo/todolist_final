@@ -1,10 +1,10 @@
 package com.devco.neslo.todolist.infraestructure;
 
-
 import com.devco.neslo.todolist.domain.lists.ListMediatorDefault;
 import com.devco.neslo.todolist.domain.model.ToDoList;
 import com.devco.neslo.todolist.domain.persistence.ListRepository;
 import com.devco.neslo.todolist.infrastructure.controllers.ListsController;
+import com.devco.neslo.todolist.infrastructure.model.ToDoListInfra;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,8 +21,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ListAcceptanceGetTest {
+public class ListAcceptanceModifyTest {
 
     @LocalServerPort
     private int port;
@@ -42,22 +43,29 @@ public class ListAcceptanceGetTest {
                 .user("neslo@gmail.com")
                 .build();
         openMocks(this);
-        when(repository.getRegistration(any(Long.class))).thenReturn(toDoListOut);
+        when(repository.modify(any(Long.class),any(ToDoList.class))).thenReturn(toDoListOut);
         webAppContextSetup(context);
         standaloneSetup(new ListsController(new ListMediatorDefault(repository)));
     }
 
     @Test
-    void shouldGetAListAndReturnStatusCode200(){
-         Long ID=Long.parseLong("100");
+    void shouldModifyAListAndReturnStatusCode200(){
+        ToDoListInfra toDoListInfra = ToDoListInfra.builder()
+                .name("Que hay de nuevo")
+                .description("Mis cosas por hacer la otra semana")
+                .user("neslo@gmail.com")
+                .build();
+        Long ID=Long.parseLong("100");
         given()
-            //    .contentType(ContentType.JSON)
-               // .body(ID)
+              .contentType(ContentType.JSON)
+               .body(toDoListInfra)
         .when()
-                .get(String.format("http://localhost:%s/lists/list/%s", port,ID))
+                .patch(String.format("http://localhost:%s/lists/modify/%s", port,ID))
         .then()
                 .statusCode(is(202))
                 .body(containsString("100"))
+                .body(containsString("Cosas por hacer"))
+                .body(containsString("Mis cosas por hacer esta semana"))
                 .body(containsString("date"));
     }
 }
