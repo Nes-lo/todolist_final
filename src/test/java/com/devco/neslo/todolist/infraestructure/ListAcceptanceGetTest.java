@@ -5,7 +5,6 @@ import com.devco.neslo.todolist.domain.lists.ListMediatorDefault;
 import com.devco.neslo.todolist.domain.model.ToDoList;
 import com.devco.neslo.todolist.domain.persistence.ListRepository;
 import com.devco.neslo.todolist.infrastructure.controllers.ListsController;
-import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

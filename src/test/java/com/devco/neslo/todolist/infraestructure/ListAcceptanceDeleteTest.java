@@ -47,7 +47,7 @@ public class ListAcceptanceDeleteTest {
     }
 
     @Test
-    void shouldGetAListAndReturnStatusCode200(){
+    void shouldDeleteAListAndReturnStatusCode200(){
         Long ID=Long.parseLong("100");
         given()
                 //    .contentType(ContentType.JSON)
