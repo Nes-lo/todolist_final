@@ -43,12 +43,7 @@ public class MemoryListRepository implements ListRepository {
            return toDoListRegistration;
        }
        else {
-           ToDoList toDoListRegistration = new ToDoList();
-           toDoListRegistration.setId(1000);
-           toDoListRegistration.setName("no encontrado");
-           toDoListRegistration.setDescription("no paso");
-           toDoListRegistration.setUser("no paso@no paso.com");
-           return toDoListRegistration;
+           return null;
 
        }
     }

@@ -4,7 +4,9 @@ package com.devco.neslo.todolist.domain.lists;
 import com.devco.neslo.todolist.domain.model.ToDoList;
 import com.devco.neslo.todolist.domain.persistence.ListRepository;
 
-import static com.devco.neslo.todolist.domain.util.StringUtils.*;
+
+import static com.devco.neslo.todolist.domain.util.Validate.getValidate;
+
 
 public class ListMediatorDefault implements ListMediator {
 
@@ -15,7 +17,7 @@ public class ListMediatorDefault implements ListMediator {
     }
 
     public ToDoList create(ToDoList toDoList){
-        validate(toDoList);
+        getValidate(toDoList);
         return listRepository.save(toDoList);
     }
 
@@ -23,7 +25,7 @@ public class ListMediatorDefault implements ListMediator {
         return listRepository.getRegistration(id);
     }
     public ToDoList modify(long id,ToDoList toDoList){
-
+        getValidate(toDoList);
         return listRepository.modify(id,toDoList);
     }
 
@@ -31,19 +33,5 @@ public class ListMediatorDefault implements ListMediator {
         return listRepository.delete(id);
     }
 
-
-    private void validate(ToDoList toDoList) {
-        StringBuilder details = new StringBuilder();
-        if(isNullOrBlank(toDoList.getName()))
-            details.append("Name is empty").append(System.lineSeparator());
-        if(isNullOrBlank(toDoList.getUser()))
-            details.append("User is empty").append(System.lineSeparator());
-        if(isNotNullOrBlank(toDoList.getUser()) &&
-                isNotEmail(toDoList.getUser()))
-            details.append("The user does not have the email format");
-
-        if(details.length() != 0)
-            throw new IllegalArgumentException(details.toString());
-    }
 
 }
