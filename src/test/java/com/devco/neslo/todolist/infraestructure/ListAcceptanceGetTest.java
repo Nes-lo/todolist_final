@@ -41,7 +41,7 @@ public class ListAcceptanceGetTest {
                 .user("neslo@gmail.com")
                 .build();
         openMocks(this);
-        when(repository.getRegistration(any(Long.class))).thenReturn(toDoListOut);
+        when(repository.registration(any(Long.class))).thenReturn(toDoListOut);
         webAppContextSetup(context);
         standaloneSetup(new ListsController(new ListMediatorDefault(repository)));
     }
@@ -55,7 +55,7 @@ public class ListAcceptanceGetTest {
         .when()
                 .get(String.format("http://localhost:%s/lists/list/%s", port,ID))
         .then()
-                .statusCode(is(202))
+                .statusCode(is(200))
                 .body(containsString("100"))
                 .body(containsString("date"));
     }

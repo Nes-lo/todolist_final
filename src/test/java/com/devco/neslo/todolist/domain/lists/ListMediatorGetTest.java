@@ -37,7 +37,7 @@ public class ListMediatorGetTest {
 
         openMocks(this);
      //   when(repository.save(any(ToDoList.class))).thenReturn(toDoListOut);
-       when(repository.getRegistration(any(Long.class))).thenReturn(toDoListOut);
+       when(repository.registration(any(Long.class))).thenReturn(toDoListOut);
         mediator = new ListMediatorDefault(repository);
     }
 
@@ -46,6 +46,6 @@ public class ListMediatorGetTest {
         ToDoList listCreated = mediator.create(toDoListIn);
         ToDoList listGet = mediator.registration(100);
         assertEquals(100, listGet.getId());
-        verify(repository).getRegistration(any(Long.class));
+        verify(repository).registration(any(Long.class));
     }
 }

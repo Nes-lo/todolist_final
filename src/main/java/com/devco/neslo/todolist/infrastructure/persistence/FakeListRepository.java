@@ -8,11 +8,11 @@ import java.util.List;
 
 import static com.devco.neslo.todolist.domain.util.BuscarUtils.buscar;
 
-public class MemoryListRepository implements ListRepository {
+public class FakeListRepository implements ListRepository {
     private final List<ToDoList> lists;
     private static Integer ID=1;
 
-    public MemoryListRepository() {
+    public FakeListRepository() {
         lists = new ArrayList();
     }
     @Override
@@ -28,13 +28,10 @@ public class MemoryListRepository implements ListRepository {
         return toDoListSaved;
     }
     @Override
-    public ToDoList getRegistration(long id){
+    public ToDoList registration(long id){
 
    int position=lists.indexOf(buscar(id,lists).get(0));
-        System.out.println("position "+position);
-        System.out.println("id "+id);
-        System.out.println("list "+lists.size());
-       if(position>=0) {
+         if(position>=0) {
            ToDoList toDoListRegistration = new ToDoList();
            toDoListRegistration.setId(lists.get(position).getId());
            toDoListRegistration.setName(lists.get(position).getName());
@@ -74,5 +71,12 @@ public class MemoryListRepository implements ListRepository {
             return null;
         }
 
+    }
+
+    @Override
+    public boolean existsById(long listId) {
+        --listId;
+        if(lists.isEmpty() || lists.size() <  listId) return false;
+        return lists.get((int)listId) != null;
     }
 }

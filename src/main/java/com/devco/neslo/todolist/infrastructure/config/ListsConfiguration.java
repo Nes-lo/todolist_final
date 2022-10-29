@@ -3,7 +3,8 @@ package com.devco.neslo.todolist.infrastructure.config;
 import com.devco.neslo.todolist.domain.lists.ListMediator;
 import com.devco.neslo.todolist.domain.lists.ListMediatorDefault;
 import com.devco.neslo.todolist.domain.persistence.ListRepository;
-import com.devco.neslo.todolist.infrastructure.persistence.MemoryListRepository;
+
+import com.devco.neslo.todolist.infrastructure.persistence.FakeListRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,7 +13,7 @@ public class ListsConfiguration {
 
     @Bean
     public ListRepository providesListRepositoryInstance(){
-        return new MemoryListRepository();
+       return new FakeListRepository();
     }
 
     @Bean

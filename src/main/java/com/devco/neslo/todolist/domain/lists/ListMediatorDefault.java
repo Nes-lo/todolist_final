@@ -22,7 +22,7 @@ public class ListMediatorDefault implements ListMediator {
     }
 
     public ToDoList registration(long id){
-        return listRepository.getRegistration(id);
+        return listRepository.registration(id);
     }
     public ToDoList modify(long id,ToDoList toDoList){
         getValidate(toDoList);

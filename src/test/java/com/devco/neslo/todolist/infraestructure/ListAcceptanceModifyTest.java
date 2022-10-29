@@ -62,7 +62,7 @@ public class ListAcceptanceModifyTest {
         .when()
                 .patch(String.format("http://localhost:%s/lists/modify/%s", port,ID))
         .then()
-                .statusCode(is(202))
+                .statusCode(is(200))
                 .body(containsString("100"))
                 .body(containsString("Cosas por hacer"))
                 .body(containsString("Mis cosas por hacer esta semana"))

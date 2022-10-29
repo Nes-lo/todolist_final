@@ -42,7 +42,7 @@ public class ListsController {
         try {
             ToDoList toDoListToGetList = listMediator.registration(id);
             ToDoListInfra toDoListInfraGetList = ToDoListMapper.toToDoListInfra(toDoListToGetList);
-             return new ResponseEntity(toDoListInfraGetList, HttpStatus.ACCEPTED);
+             return new ResponseEntity(toDoListInfraGetList, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity(new Error("Solicitud errada", e.getMessage().split(System.lineSeparator())),
                     HttpStatus.BAD_REQUEST);
@@ -58,7 +58,7 @@ public class ListsController {
             ToDoList toDoListToModify = ToDoListMapper.toToDoList(toDoListInfra);
             ToDoList toDoListToModifyList = listMediator.modify(id,toDoListToModify);
             ToDoListInfra toDoListInfraModifyList = ToDoListMapper.toToDoListInfra(toDoListToModifyList);
-            return new ResponseEntity(toDoListInfraModifyList, HttpStatus.ACCEPTED);
+            return new ResponseEntity(toDoListInfraModifyList, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity(new Error("Solicitud errada", e.getMessage().split(System.lineSeparator())),
                     HttpStatus.BAD_REQUEST);
