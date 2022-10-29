@@ -8,11 +8,11 @@ import java.util.List;
 
 import static com.devco.neslo.todolist.domain.util.BuscarUtils.buscar;
 
-public class MemoryListRepository implements ListRepository {
+public class FakeListRepository implements ListRepository {
     private final List<ToDoList> lists;
     private static Integer ID=1;
 
-    public MemoryListRepository() {
+    public FakeListRepository() {
         lists = new ArrayList();
     }
     @Override
