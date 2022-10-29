@@ -5,6 +5,7 @@ import com.devco.neslo.todolist.domain.items.ItemMediatorDefault;
 import com.devco.neslo.todolist.domain.model.Item;
 import com.devco.neslo.todolist.domain.persistence.ListRepository;
 import com.devco.neslo.todolist.infrastructure.persistence.FakeItemRepository;
+import com.devco.neslo.todolist.infrastructure.persistence.FakeListRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -29,7 +30,7 @@ class ItemMediatorTest {
         itemMilk = Item.builder().id(1).description("Comprar Leche").done(false).build();
         openMocks(this);
         when(listRepository.existsById(any(Long.class))).thenReturn(true);
-        this.mediator = new ItemMediatorDefault(new FakeItemRepository());
+        this.mediator = new ItemMediatorDefault(new FakeListRepository(),new FakeItemRepository());
     }
 
     @Test

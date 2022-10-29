@@ -13,10 +13,11 @@ public class ItemMediatorDefault implements ItemMediator {
     private final ListRepository listRepository;
     private final ItemRepository itemRepository;
 
-    public ItemMediatorDefault(ItemRepository itemRepository) {
+    public ItemMediatorDefault(ListRepository listRepository, ItemRepository itemRepository) {
         this.listRepository = listRepository;
         this.itemRepository = itemRepository;
     }
+
 
     @Override
     public Item create(long listId, Item item) {
