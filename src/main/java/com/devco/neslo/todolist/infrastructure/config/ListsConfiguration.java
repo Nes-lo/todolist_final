@@ -2,11 +2,12 @@ package com.devco.neslo.todolist.infrastructure.config;
 
 import com.devco.neslo.todolist.domain.lists.ListMediator;
 import com.devco.neslo.todolist.domain.lists.ListMediatorDefault;
+import com.devco.neslo.todolist.domain.lists.ListValidator;
 import com.devco.neslo.todolist.domain.model.ToDoList;
 import com.devco.neslo.todolist.domain.persistence.ListRepository;
 
 import com.devco.neslo.todolist.domain.util.Validator;
-import com.devco.neslo.todolist.infrastructure.persistence.FakeListRepository;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,8 +15,8 @@ import org.springframework.context.annotation.Configuration;
 public class ListsConfiguration {
 
     @Bean
-    public ListRepository providesListRepositoryInstance(){
-       return new FakeListRepository();
+    public Validator<ToDoList> providesListValidatorInstance() {
+        return new ListValidator();
     }
 
     @Bean

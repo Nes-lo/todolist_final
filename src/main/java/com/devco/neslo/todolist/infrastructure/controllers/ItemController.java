@@ -4,6 +4,7 @@ import com.devco.neslo.todolist.domain.items.ItemMediator;
 import com.devco.neslo.todolist.domain.model.Item;
 import com.devco.neslo.todolist.infrastructure.mappers.ItemMapper;
 import com.devco.neslo.todolist.infrastructure.model.ItemDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import static java.util.stream.Collectors.toList;
 @RestController
 public class ItemController {
 
+    @Autowired
     private final ItemMediator itemMediator;
 
     public ItemController(ItemMediator itemMediator) {

@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 public class ItemsConfiguration {
 
 
-    private ItemRepository repository;
+
 
     @Bean
     public ItemRepository providesItemRepositoryInstance(){
