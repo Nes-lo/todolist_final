@@ -16,7 +16,8 @@ import static com.devco.neslo.todolist.domain.util.Validate.getValidate;
 import static java.lang.String.format;
 
 
-public class ListMediatorDefault implements ListMediator {
+public class
+ListMediatorDefault implements ListMediator {
 
     private final Validator<ToDoList> validator;
     private final ListRepository listRepository;
