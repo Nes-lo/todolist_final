@@ -53,7 +53,9 @@ public class FakeListRepository implements ListRepository {
 
     @Override
     public boolean existsById(long listId) {
+        System.out.println("A "+listId);
         --listId;
+        System.out.println("B "+listId);
         if(lists.isEmpty() || lists.size() <  listId) return false;
         return lists.get((int)listId) != null;
     }

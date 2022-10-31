@@ -1,9 +1,11 @@
 package com.devco.neslo.todolist.domain.items;
 
+
+import com.devco.neslo.todolist.domain.exception.NotFoundException;
 import com.devco.neslo.todolist.domain.model.Item;
 import com.devco.neslo.todolist.domain.persistence.ItemRepository;
 import com.devco.neslo.todolist.domain.persistence.ListRepository;
-import org.webjars.NotFoundException;
+
 
 import java.util.List;
 import java.util.Optional;

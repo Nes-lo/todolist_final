@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
@@ -44,9 +43,10 @@ class ItemMediatorTest {
     void shouldThrowNotFoundExceptionWhenListIdDoesntExists() {
         when(listRepository.existsById(any(Long.class))).thenReturn(false);
         long id = 5L;
-
+        System.out.println("a"+mediator.create(id, itemRice).getId());
         NotFoundException exception = assertThrows(NotFoundException.class,
-                () -> mediator.create(id, itemRice),
+                () -> mediator.create(id, itemRice)
+                ,
                 "Debia lanzar un NotFoundException cuando la lista no existe, pero no ocurrio");
 
         assertTrue(exception.getMessage().contains(String.format("list with id %s not found", id)));
