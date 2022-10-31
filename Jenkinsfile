@@ -16,11 +16,14 @@ pipeline{
           }
        }
 
-       stage('test'){
-                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                                     bat "gradlew test"
-                                 }
-         }
+        stage('test'){
+                       steps{
+                       catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                           bat "gradlew test"
+                       }
+
+                       }
+               }
 
        stage('cobertura'){
                    steps{
