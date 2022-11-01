@@ -17,6 +17,6 @@ public class ToDoList {
     private String name;
     private String description;
     private String user;
-    private List<Item> items;
+   // private List<Item> items;
 
    }
