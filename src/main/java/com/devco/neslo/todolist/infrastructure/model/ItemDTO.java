@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Data
 @Builder
 @Entity
-@Table(name="ItemDTO")
+@Table(name="ItemBD")
 public class ItemDTO {
 
     @Id
