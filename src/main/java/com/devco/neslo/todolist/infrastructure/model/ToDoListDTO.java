@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="ToDoListBD")
+@Table(name="ToDoListDTO")
 public class ToDoListDTO {
 
     @Id
